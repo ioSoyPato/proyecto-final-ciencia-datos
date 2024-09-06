@@ -58,6 +58,15 @@ Este proyecto inicial se basa en un dataset de telemetría ambiental que incluye
 | `smoke`  | Humo                 | ppm (%)    |
 | `temp`   | Temperatura          | Fahrenheit |
 
+## 📜 Antecedentes
+
+### Predicción de la Temperatura
+Los avances en el análisis de datos de sensores IoT han permitido predecir variables ambientales críticas, como la temperatura, con gran precisión. Existen numerosos estudios que han utilizado datos de telemetría ambiental para mejorar la predicción de condiciones climáticas y ambientales en tiempo real. Modelos como las redes neuronales, máquinas de soporte vectorial (SVM) y bosques aleatorios (random forests) se han aplicado en este ámbito, con un enfoque en la reducción del error de predicción al utilizar características adicionales como la humedad, gases y presencia de luz o movimiento. Este enfoque multidimensional permite obtener predicciones más precisas, particularmente en entornos variables, como los observados en sensores IoT conectados en ubicaciones geográficas diversas.
+
+### Desarrollo de Plataformas Visuales
+El objetivo final de este proyecto es desarrollar una plataforma visual que permita a los usuarios, incluso sin experiencia técnica, realizar análisis de ciencia de datos de manera sencilla. Herramientas como Orange han revolucionado la forma en que se interactúa con grandes volúmenes de datos al proporcionar una interfaz gráfica que facilita la creación de flujos de trabajo de análisis mediante arrastrar y soltar. La combinación de potentes modelos de aprendizaje automático con una interfaz visual amigable ha demostrado ser una solución exitosa para democratizar el análisis de datos, lo que inspiró este proyecto. Al aprovechar AWS para el despliegue y la escalabilidad, este proyecto busca extender estas capacidades hacia el análisis de datos de sensores IoT, ofreciendo una experiencia de usuario optimizada y accesible.
+
+
 ## 🏗️ Próximos Pasos
 1. **Entrenamiento y Evaluación** de modelos predictivos basados en los datos de sensores.
 2. Implementación de **pruebas en AWS** para evaluar el rendimiento y escalabilidad.
