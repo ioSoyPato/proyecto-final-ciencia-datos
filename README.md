@@ -1,15 +1,32 @@
-# 🌐 MLOBS Deployment: IoT Sensor Data on AWS 🚀
+#  MLOBS Deployment: IoT Sensor Data on AWS 🚀
 
-## 📚 Overview
-Este proyecto tiene como objetivo la creación de un **modelo de MLOBS** (Machine Learning Operations and Deployment) centrado en la implementación de modelos de aprendizaje automático utilizando servidores de AWS. Nuestro enfoque actual es la prueba de modelos con **datos de sensores IoT** y, en el futuro, este proyecto podría evolucionar para convertirse en una **plataforma visual al estilo "Orange"** para el análisis de ciencia de datos de cualquier dataset, ¡todo con una interfaz gráfica amigable!
+## 📚 Motivación del proyecto
+Nuestro enfoque actual es la prueba de modelos con **datos de sensores IoT**. El proyecto busca aprovechar el potencial de los datos IoT para ofrecer soluciones inteligentes que no solo mejoren la eficiencia y precisión en la predicción de variables ambientales, sino que también ofrezcan una experiencia de usuario amigable y accesible.
 
 ## 🎯 Objetivo
 Desarrollar una solución de **ML Deployment** eficiente y escalable que permita desplegar modelos de machine learning y analizarlos de manera gráfica, aprovechando los servicios de AWS para ofrecer resultados rápidos y confiables.
 
+##  Objetivos específicos
+1. **Entrenamiento y optimización de modelos predictivos:**
+
+    Desarrollar modelos de predicción para variables ambientales como la temperatura, la humedad y la detección de gases utilizando los datos de sensores IoT.
+
+2. **Automatización y escalabilidad del proceso de deployment:**
+
+    Automatizar el proceso de deployment de los modelos en AWS utilizando MLOps para asegurar actualizaciones continuas y el manejo de nuevas versiones del modelo.
+
+3. **Análisis de la precisión de predicciones:**
+
+    Realizar análisis exhaustivos de la precisión de los modelos en diferentes escenarios.
+
+##  Planteamiento del problema:
+Se predecirá la temperatura a través de la toma de sensores.
+
+
 ## 🌱 Dataset: Environmental Sensor Telemetry Data
 Este proyecto inicial se basa en un dataset de telemetría ambiental que incluye lecturas de temperatura, humedad, gases y movimiento. Estos datos fueron generados a través de una serie de **dispositivos IoT conectados a Raspberry Pi**, que fueron colocados en ubicaciones con condiciones ambientales variadas.
 
-### 🧠 Características del Dataset:
+### 🧠 Estructura del Dataset:
 - **Periodo**: 07/12/2020 - 07/19/2020
 - **Dispositivos IoT**: 
   - `00:0f:00:70:91:0a`: Condiciones estables, más frío y húmedo.
@@ -27,23 +44,7 @@ Este proyecto inicial se basa en un dataset de telemetría ambiental que incluye
   
 - **Formato de Mensajes**: Los datos fueron transmitidos usando el protocolo MQTT, que sigue el estándar ISO para la transmisión de telemetría en redes de sensores.
 
-### 🔢 Ejemplo de Payload MQTT:
 
-```json
-{
-  "data": {
-    "co": 0.0061,
-    "humidity": 55.1,
-    "light": true,
-    "lpg": 0.0089,
-    "motion": false,
-    "smoke": 0.0239,
-    "temp": 31.8
-  },
-  "device_id": "6e:81:c9:d4:9e:58",
-  "ts": 1594419195.292461
-}
-```
 
 ### 📝 Estructura del Dataset:
 | Column   | Descripción          | Unidades    |
@@ -79,5 +80,3 @@ El objetivo final de este proyecto es desarrollar una plataforma visual que perm
 
 ---
 
-### 🚀 Únete al Viaje
-Este es solo el comienzo de un viaje emocionante para democratizar el análisis de datos mediante una plataforma visual impulsada por IA. ¡Te invitamos a seguir nuestras actualizaciones y colaborar con nosotros en este emocionante proyecto!
