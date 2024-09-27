@@ -1,9 +1,9 @@
-#  MLOBS Deployment: IoT Sensor Data on AWS 🚀
+#  MLOPS Deployment: IoT Sensor Data on AWS 🚀
 
-## 📚 Motivación del proyecto
+## 📚 Introducción
 Nuestro enfoque actual es la prueba de modelos con **datos de sensores IoT**. El proyecto busca aprovechar el potencial de los datos IoT para ofrecer soluciones inteligentes que no solo mejoren la eficiencia y precisión en la predicción de variables ambientales, sino que también ofrezcan una experiencia de usuario amigable y accesible.
 
-## 🎯 Objetivo
+## 🎯 Objetivo General
 Desarrollar una solución de **ML Deployment** eficiente y escalable que permita desplegar modelos de machine learning y analizarlos de manera gráfica, aprovechando los servicios de AWS para ofrecer resultados rápidos y confiables.
 
 ##  Objetivos específicos
@@ -20,8 +20,15 @@ Desarrollar una solución de **ML Deployment** eficiente y escalable que permita
     Realizar análisis exhaustivos de la precisión de los modelos en diferentes escenarios.
 
 ##  Planteamiento del problema:
-Se predecirá la temperatura a través de la toma de sensores.
+El proyecto aborda el análisis y procesamiento de grandes volúmenes de datos generados por sensores IoT, una tarea que presenta múltiples desafíos tanto técnicos como operacionales. Los dispositivos IoT ubicados en diferentes entornos recolectan datos ambientales críticos como temperatura, humedad, niveles de gases y detección de movimiento, los cuales deben ser procesados y analizados en tiempo real para extraer información valiosa.
 
+## 📜 Antecedentes
+
+### Predicción de la Temperatura
+Los avances en el análisis de datos de sensores IoT han permitido predecir variables ambientales críticas, como la temperatura, con gran precisión. Existen numerosos estudios que han utilizado datos de telemetría ambiental para mejorar la predicción de condiciones climáticas y ambientales en tiempo real. Modelos como las redes neuronales, máquinas de soporte vectorial (SVM) y bosques aleatorios (random forests) se han aplicado en este ámbito, con un enfoque en la reducción del error de predicción al utilizar características adicionales como la humedad, gases y presencia de luz o movimiento. Este enfoque multidimensional permite obtener predicciones más precisas, particularmente en entornos variables, como los observados en sensores IoT conectados en ubicaciones geográficas diversas.
+
+### Desarrollo de Plataformas Visuales
+El objetivo final de este proyecto es desarrollar una plataforma visual que permita a los usuarios, incluso sin experiencia técnica, realizar análisis de ciencia de datos de manera sencilla. Herramientas como Orange han revolucionado la forma en que se interactúa con grandes volúmenes de datos al proporcionar una interfaz gráfica que facilita la creación de flujos de trabajo de análisis mediante arrastrar y soltar. La combinación de potentes modelos de aprendizaje automático con una interfaz visual amigable ha demostrado ser una solución exitosa para democratizar el análisis de datos, lo que inspiró este proyecto. Al aprovechar AWS para el despliegue y la escalabilidad, este proyecto busca extender estas capacidades hacia el análisis de datos de sensores IoT, ofreciendo una experiencia de usuario optimizada y accesible.
 
 ## 🌱 Dataset: Environmental Sensor Telemetry Data
 Este proyecto inicial se basa en un dataset de telemetría ambiental que incluye lecturas de temperatura, humedad, gases y movimiento. Estos datos fueron generados a través de una serie de **dispositivos IoT conectados a Raspberry Pi**, que fueron colocados en ubicaciones con condiciones ambientales variadas.
@@ -59,13 +66,6 @@ Este proyecto inicial se basa en un dataset de telemetría ambiental que incluye
 | `smoke`  | Humo                 | ppm (%)    |
 | `temp`   | Temperatura          | Fahrenheit |
 
-## 📜 Antecedentes
-
-### Predicción de la Temperatura
-Los avances en el análisis de datos de sensores IoT han permitido predecir variables ambientales críticas, como la temperatura, con gran precisión. Existen numerosos estudios que han utilizado datos de telemetría ambiental para mejorar la predicción de condiciones climáticas y ambientales en tiempo real. Modelos como las redes neuronales, máquinas de soporte vectorial (SVM) y bosques aleatorios (random forests) se han aplicado en este ámbito, con un enfoque en la reducción del error de predicción al utilizar características adicionales como la humedad, gases y presencia de luz o movimiento. Este enfoque multidimensional permite obtener predicciones más precisas, particularmente en entornos variables, como los observados en sensores IoT conectados en ubicaciones geográficas diversas.
-
-### Desarrollo de Plataformas Visuales
-El objetivo final de este proyecto es desarrollar una plataforma visual que permita a los usuarios, incluso sin experiencia técnica, realizar análisis de ciencia de datos de manera sencilla. Herramientas como Orange han revolucionado la forma en que se interactúa con grandes volúmenes de datos al proporcionar una interfaz gráfica que facilita la creación de flujos de trabajo de análisis mediante arrastrar y soltar. La combinación de potentes modelos de aprendizaje automático con una interfaz visual amigable ha demostrado ser una solución exitosa para democratizar el análisis de datos, lo que inspiró este proyecto. Al aprovechar AWS para el despliegue y la escalabilidad, este proyecto busca extender estas capacidades hacia el análisis de datos de sensores IoT, ofreciendo una experiencia de usuario optimizada y accesible.
 
 ## 🏗️ Próximos Pasos
 1. **Entrenamiento y Evaluación** de modelos predictivos basados en los datos de sensores.
