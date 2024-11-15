@@ -1,31 +1,70 @@
+import pickle
 import mlflow
-import pandas as pd
+from fastapi import FastAPI
+from pydantic import BaseModel
+from mlflow import MlflowClient
 
-# Configura la URI de rastreo de mlflow (cambia esto si necesitas otra dirección)
+dagshub_repo = "https://dagshub.com/ioSoyPato/proyecto-final-ciencia-datos"
 MLFLOW_TRACKING_URI = "https://dagshub.com/ioSoyPato/proyecto-final-ciencia-datos.mlflow"
-mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
 
-# Nombre del modelo y alias
+
+mlflow.set_tracking_uri(uri=MLFLOW_TRACKING_URI)
+client = MlflowClient(tracking_uri=MLFLOW_TRACKING_URI)
+
+run_ = mlflow.search_runs(order_by=['metrics.rmse ASC'],
+                          output_format="list",
+                          experiment_names=["temp-prediction-experiment"]
+                          )[0]
+
+
+run_id = run_.info.run_id
+
+run_uri = f"runs:/{run_id}/preprocessor"
+
+
+client.download_artifacts(
+    run_id=run_id,
+    path='preprocessor',
+    dst_path='.'
+)
+
+with open("preprocessor/preprocessor.b", "rb") as f_in:
+    dv = pickle.load(f_in)
+
+
 model_name = "MyModel"
 alias = "champion"
 
-# URI del modelo
 model_uri = f"models:/{model_name}@{alias}"
 
-# Carga el modelo
-champion_model = mlflow.pyfunc.load_model(model_uri=model_uri)
+champion_model = mlflow.pyfunc.load_model(
+    model_uri=model_uri
+)
 
-input_data = pd.DataFrame({
-    "ts": [1594512094.9],
-    "co": [0.001171],
-    "humidity": [1.1],
-    "lpg": [0.002693],
-    "smoke": [0.006692]
-})
+def predict(input_data):
+
+    X_pred = (input_data)
+
+    return champion_model.predict(X_pred)
+
+app = FastAPI()
+
+class InputData(BaseModel):
+    ts: float
+    co: float
+    humidity: float
+    light:int
+    lpg: float
+    motion: int
+    smoke:float
+
+#['ts', 'co', 'humidity', 'light', 'lpg', 'motion', 'smoke']
 
 
-# Realiza la predicción
-prediction = champion_model.predict(input_data)
+@app.post("/predict")
+def predict_endpoint(input_data: InputData):
+    result = predict(input_data)[0]
 
-# Imprime la predicción
-print("Predicción:", prediction)
+    return {
+        "prediction": float(result)
+    }
