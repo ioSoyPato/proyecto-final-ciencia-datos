@@ -1,33 +1,27 @@
-version: '3.8'
+name: proyecto-final
 
 services:
-  api:
+  # Servicio de Frontend
+  ui:
+    network_mode: host
+    image: patricio-villanueva-examen-ui:latest  # Nombre y etiqueta de la imagen que se generará o usará
+    # container_name: nyc-taxi-ui-container  # Nombre asignado al contenedor
     build:
-      context: frontend
-      dockerfile: Dockerfile  
-    container_name: temp-model-container
+      context: ./UI  # Carpeta que contiene los archivos para construir la imagen del frontend
+      dockerfile: Dockerfile  # Nombre del Dockerfile, relativo al contexto especificado
     ports:
-      - "8000:8000"
-    networks:
-      - myNetwork
-    volumes:
-      - ./data:/code/data 
-
-  streamlit:
-    build:
-      context: backend
-      dockerfile: Dockerfile  
-    container_name: streamlit-app
-    ports:
-      - "8501:8501"
+      - "8501:8501"  # Mapea el puerto 8501 del host al puerto 8501 del contenedor
     depends_on:
-      - api  # Asegura que la API se inicie antes que la app de Streamlit
-    networks:
-      - myNetwork 
-    volumes:
-      - ./data:/code/data 
+      - model  # Garantiza que el contenedor 'model' (backend) se levante antes que el frontend
 
-networks:
-  myNetwork:  # Nombre de la red que comparten los servicios
-    name: myNetwork-1  # Nombre específico de la red
-    driver: bridge  # El tipo de red, 'bridge' permite la comunicación interna entre los contenedores
+
+  # Servicio de Backend
+  model:
+    network_mode: host
+    image: patricio-villanueva-examen-model:latest  # Nombre y etiqueta de la imagen que se generará o usará para el backend
+    # container_name: nyc-taxi-model-container  # Nombre asignado al contenedor backend
+    build:
+      context: ./model  # Carpeta que contiene los archivos para construir la imagen del backend
+      dockerfile: Dockerfile  # Nombre del Dockerfile, relativo al contexto especificado
+    ports:
+      - "8000:8000"  # Mapea el puerto 8000 del host al puerto 8000 del contenedor

@@ -1,19 +1,17 @@
-# Base oficial de Python
-FROM python:3.10-slim
+FROM python:3.11-slim
 
-# Establece el directorio de trabajo
-WORKDIR /app
+WORKDIR /code
 
-# Copia los archivos necesarios a la imagen
-COPY . .
+COPY ./requirements.txt /code/requirements.txt
 
-RUN pip install --upgrade pip setuptools
+RUN apt-get update && apt-get install -y procps && pip install -U pip && rm /etc/localtime && ln -s /usr/share/zoneinfo/America/Mexico_City /etc/localtime
 
-# Instala las dependencias necesarias
-RUN pip install fastapi uvicorn mlflow pydantic
+RUN pip install -r ./requirements.txt
 
-# Expone el puerto en el que se ejecutará la aplicación
+COPY ./api.py /code/
+
 EXPOSE 8000
 
-# Comando para ejecutar la aplicación con Uvicorn
-CMD ["uvicorn", "api:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uvicorn","api:app", "--host", "0.0.0.0", "--port", "8000"]
+
+

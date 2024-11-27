@@ -14,7 +14,8 @@ def user_input_features():
     humidity = st.sidebar.number_input("humidity", value=1.1, min_value=1.1, max_value=99.900002)
     lpg = st.sidebar.number_input("lpg", value=0.002693, min_value=0.002693, max_value=0.016567)
     smoke = st.sidebar.number_input("smoke", value=0.006692, min_value=0.006692, max_value=0.04659)
-    temp = st.sidebar.number_input("temp", value=10.0, min_value=0.0, max_value=30.6)
+    light = st.sidebar.radio("light", [True, False], index=0)  # Campo booleano
+    motion = st.sidebar.radio("motion", [True, False], index=0)  # Campo booleano
 
     input_dict = {
         "ts": ts,
@@ -22,7 +23,8 @@ def user_input_features():
         "humidity": humidity,
         "lpg": lpg,
         "smoke": smoke,
-        "temp": temp,
+        "light": light,
+        "motion": motion
     }
 
     return input_dict
@@ -31,8 +33,13 @@ input_dict = user_input_features()
 
 if st.button('Predict'):
     response = requests.post(
-        url="http://temp-model-container:8000/predict",
-        data=json.dumps(input_dict)
+        url="http://localhost:8000/predict",  
+        headers={"Content-Type": "application/json"},
+        data=json.dumps(input_dict)  
     )
 
-    st.write(f"La temperatura esperada es: {response.json()['prediction']} grados centígrados")
+    if response.status_code == 200:
+        st.write(f"La temperatura predicha es: **{response.json()['prediction']} grados centígrados**")
+    else:
+        st.write("Error en la predicción.")
+        st.write(f"Detalle del error: {response}")
